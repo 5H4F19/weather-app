@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <style type="text/css">
+            html {
+                height: 100%;
+            }
+            body {
+                height: 100%;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                background: url('./bgdesktop.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        
+            .city {
+                align-items: center;
+                width: 80%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                padding: 40px 8%;
+                border-radius: 20px;
+                background: rgba( 255, 255, 255, 0.45 );
+                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                backdrop-filter: blur( 9.0px );
+                -webkit-backdrop-filter: blur( 9.0px );
+                border-radius: 10px;
+                border: 1px solid rgba( 255, 255, 255, 0.18 );
+            }
+
+            .city-name {
+                font-size: 2em;
+            }
+            @media screen and (max-width: 992px) {
+            body {
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="city">
+            <h2 class="city-name">
+                <span>Please go online to check the current weather.</span>
+            </h2>
+        </div>
+        <script>
+            if('serviceWorker' in navigator) {
+                  window.addEventListener('load', () => {
+                      navigator.serviceWorker.register('./serviceworker.js')
+                          .then((reg) => console.log('Success: ', reg.scope))
+                          .catch((err) => console.log('Failure: ', err));
+                  })
+              }
+        </script>
+    </body>
+</html>
